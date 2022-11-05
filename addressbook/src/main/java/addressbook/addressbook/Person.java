@@ -8,7 +8,9 @@ package addressbook.addressbook;
  *
  * @author tamim
  */
-public class Person {
+public class Person  {
     private String firstName, lastName;
+    BirthDate person_birth_date = new BirthDate();
+    
     
 }
