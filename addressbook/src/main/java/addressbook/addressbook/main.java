@@ -8,8 +8,7 @@ package addressbook.addressbook;
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public class Addressbook {
-
+public class main {
     public static void main(String[] args) {
         System.out.println("The start of the Project");
     }
