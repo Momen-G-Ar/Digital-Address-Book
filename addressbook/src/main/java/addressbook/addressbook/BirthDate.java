@@ -5,7 +5,6 @@
 package addressbook.addressbook;
 
 /**
- *
  * @author tamim
  */
 public class BirthDate {
