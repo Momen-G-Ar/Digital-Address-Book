@@ -9,8 +9,42 @@ package addressbook.addressbook;
  * @author tamim
  */
 public class Person  {
-    private String firstName, lastName;
-    BirthDate person_birth_date = new BirthDate();
-    
+    private String firstName;
+    private String lastName;
+    private BirthDate personBirthDate;
+
+    public Person(String firstName, String lastName, BirthDate personBirthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.personBirthDate = personBirthDate;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public BirthDate getPersonBirthDate() {
+        return personBirthDate;
+    }
+
+    public void setPersonBirthDate(BirthDate personBirthDate) {
+        this.personBirthDate = personBirthDate;
+    }
+    public String getInfo()
+    {
+        return this.firstName + " " + this.lastName + " " + this.personBirthDate.getInfo();
+    }
     
 }

@@ -8,7 +8,21 @@ package addressbook.addressbook;
  * @author tamim
  */
 public class BirthDate {
-    private int month, day, year;
+
+    private int day, month, year;
+
+    public BirthDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+    public BirthDate(BirthDate b)
+    {
+        this.day = b.getDay();
+        this.month = b.getMonth();
+        this.year = b.getYear();
+    }
+    
 
     public int getMonth() {
         return month;
@@ -33,14 +47,9 @@ public class BirthDate {
     public void setYear(int year) {
         this.year = year;
     }
-
-    public BirthDate(int month, int day, int year) {
-        this.month = month;
-        this.day = day;
-        this.year = year;
-    }
-
-    public BirthDate() {
+    public String getInfo()       
+    {
+        return "Day = " + this.day + " Month " + this.month + " Year " + this.year;
     }
     
 }
