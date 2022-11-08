@@ -10,7 +10,6 @@ package addressbook;
  */
 public class Main {
     public static void main(String[] args) {
-        Person p1 = new Person("Momen", "Arafeh", new BirthDate(2 , 3 ,2022));
-        System.out.println(p1.getInfo());
+        System.out.println("The main function");
     }
 }
