@@ -5,16 +5,16 @@
 package addressbook;
 
 /**
- * @author Momen..G.Ar
+ * @author Momin Arafa && Tamim Salhab
  */
-public class Business extends AdressBook{
+public class Business extends AddressBook {
+
     private String title;
     private String genre;
     private String contactPerson;
     private String webSite;
 
     public Business(String title, String genre, String contactPerson, String webSite, String country, String city, String postalCode, String email) {
-        super(country, city, postalCode, email);
         this.title = title;
         this.genre = genre;
         this.contactPerson = contactPerson;
@@ -52,4 +52,45 @@ public class Business extends AdressBook{
     public void setWebSite(String webSite) {
         this.webSite = webSite;
     }
+
+    @Override
+    public String getCountry() {
+        return this.country;
+    }
+
+    @Override
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String getCity() {
+        return this.city;
+    }
+
+    @Override
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public String getPostalCode() {
+        return this.postalCode;
+    }
+
+    @Override
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    @Override
+    public String getEmail() {
+        return this.email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

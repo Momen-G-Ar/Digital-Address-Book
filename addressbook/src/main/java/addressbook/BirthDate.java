@@ -7,7 +7,7 @@ package addressbook;
 import java.util.Date;
 
 /**
- * @author tamim
+ * @author Momin Arafa && Tamim Salhab
  */
 public class BirthDate {
 
