@@ -4,6 +4,8 @@
  */
 package addressbook;
 
+import java.util.ArrayList;
+
 /**
  * @author Momin Arafa && Tamim Salhab
  */
@@ -11,10 +13,19 @@ public class Business extends AddressBook {
 
     private String title;
     private String genre;
-    private String contactPerson;
+    private Person contactPerson;
     private String webSite;
 
-    public Business(String title, String genre, String contactPerson, String webSite, String country, String city, String postalCode, String email) {
+    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers) {
+        super(country, city, postalCode, email, telephoneNumbers);
+        this.title = title;
+        this.genre = genre;
+        this.contactPerson = contactPerson;
+        this.webSite = webSite;
+    }
+
+    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, String TelephoneNumber) {
+        super(country, city, postalCode, email, TelephoneNumber);
         this.title = title;
         this.genre = genre;
         this.contactPerson = contactPerson;
@@ -37,11 +48,11 @@ public class Business extends AddressBook {
         this.genre = genre;
     }
 
-    public String getContactPerson() {
+    public Person getContactPerson() {
         return contactPerson;
     }
 
-    public void setContactPerson(String contactPerson) {
+    public void setContactPerson(Person contactPerson) {
         this.contactPerson = contactPerson;
     }
 
@@ -91,6 +102,42 @@ public class Business extends AddressBook {
     @Override
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public void addTelephoneNumber(String number) {
+        this.telephoneNumbers.add(number);
+    }
+
+    @Override
+    public void deleteTelephoneNumber(String number) {
+        this.telephoneNumbers.remove(this.telephoneNumbers.indexOf(number));
+    }
+
+    @Override
+    public ArrayList<String> getTelephoneNumbers() {
+        return telephoneNumbers;
+    }
+
+    @Override
+    public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
+        this.telephoneNumbers = telephoneNumbers;
+    }
+
+    @Override
+    public String getInfo() {
+        String ret = "Contact Person Information : \n" + this.contactPerson.getInfo()
+                + "Work Information : \n"
+                + "Title : " + this.title
+                + "\nGenre : " + this.genre
+                + "\nCountry : " + this.country + ", City " + this.city
+                + "\nEmail : " + this.email
+                + "\nPostal Code : " + this.postalCode
+                + "\nTelephone numbers :\n";
+        for (String number : this.telephoneNumbers) {
+            ret += number + "\n";
+        }
+        return ret;
     }
 
 }

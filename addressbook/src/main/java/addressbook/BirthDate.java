@@ -146,7 +146,7 @@ public class BirthDate {
 
     // get information of the birth date
     public String getInfo() {
-        return "Day = " + this.day + " Month " + this.month + " Year " + this.year;
+        return "Day " + this.day + " Month " + this.month + " Year " + this.year;
     }
 
 }
