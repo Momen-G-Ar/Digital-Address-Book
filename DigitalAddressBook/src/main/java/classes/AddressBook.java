@@ -39,6 +39,7 @@ public abstract class AddressBook {
 
     public abstract String getCountry();
 
+    
     public abstract ArrayList<String> getTelephoneNumbers();
 
     public abstract void setTelephoneNumbers(ArrayList<String> telephoneNumbers);
