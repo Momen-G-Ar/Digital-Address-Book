@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         Person momen;
         momen = new Person("Momin", "Arafa", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "05666", "MominArafa@gmail.com", "0597456589");
+                "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589");
         momen.addTelephoneNumber("0599676072");
         System.out.println(momen.getInfo());
     }
