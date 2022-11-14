@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
-package addressbook;
+package main;
+
+import classes.BirthDate;
+import classes.Person;
 
 /**
  * @author Momin Arafa && Tamim Salhab
@@ -13,6 +16,7 @@ public class Main {
         Person momen;
         momen = new Person("Momin", "Arafa", new BirthDate(25, 6, 2002),
                 "Palestine", " Hebron", "05666", "MominArafa@gmail.com", "0597456589");
+        momen.addTelephoneNumber("0599676072");
         System.out.println(momen.getInfo());
     }
 }
