@@ -54,74 +54,19 @@ public class Person extends AddressBook {
     }
 
     @Override
-    public String getCountry() {
-        return this.country;
+    public boolean equals(AddressBook a) {
+        return a.getInfo().equals(this.getInfo());
     }
-
-    @Override
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Override
-    public String getCity() {
-        return this.city;
-    }
-
-    @Override
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    @Override
-    public String getPostalCode() {
-        return this.postalCode;
-    }
-
-    @Override
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    @Override
-    public String getEmail() {
-        return this.email;
-    }
-
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public void addTelephoneNumber(String number) {
-        this.telephoneNumbers.add(number);
-    }
-
-    @Override
-    public void deleteTelephoneNumber(String number) {
-        this.telephoneNumbers.remove(this.telephoneNumbers.indexOf(number));
-    }
-
-    @Override
-    public ArrayList<String> getTelephoneNumbers() {
-        return telephoneNumbers;
-    }
-
-    @Override
-    public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
-        this.telephoneNumbers = telephoneNumbers;
-    }
-
+    
     @Override
     public String getInfo() {
         String ret = "Name : " + this.firstName + ' ' + this.lastName
                 + "\nBirth Date : " + this.personBirthDate.getInfo()
-                + "\nCountry : " + this.country + ", City " + this.city
-                + "\nEmail : " + this.email
-                + "\nPostal Code : " + this.postalCode
+                + "\nCountry : " + super.getCountry() + ", City " + super.getCity()
+                + "\nEmail : " + super.getEmail()
+                + "\nPostal Code : " + super.getPostalCode()
                 + "\nTelephone numbers :\n";
-        for (String number : this.telephoneNumbers) {
+        for (String number : super.getTelephoneNumbers()) {
             ret += number + "\n";
         }
         return ret;

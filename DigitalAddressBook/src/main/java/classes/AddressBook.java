@@ -11,11 +11,11 @@ import java.util.ArrayList;
  */
 public abstract class AddressBook {
 
-    protected String country;
-    protected String city;
-    protected String postalCode;
-    protected String email;
-    protected ArrayList<String> telephoneNumbers;
+    private String country;
+    private String city;
+    private String postalCode;
+    private String email;
+    private ArrayList<String> telephoneNumbers;
 
     // Two constructors 
     // Accept evety thing and the telephone is array list 
@@ -29,7 +29,7 @@ public abstract class AddressBook {
 
     // Accept evety thing and the telephone is one number is integer 
     public AddressBook(String country, String city, String postalCode, String email, String TelephoneNumber) {
-        this.country =  country;
+        this.country = country;
         this.city = city;
         this.postalCode = postalCode;
         this.email = email;
@@ -37,29 +37,53 @@ public abstract class AddressBook {
         this.telephoneNumbers.add(TelephoneNumber);
     }
 
-    public abstract String getCountry();
+    public String getCountry() {
+        return this.country;
+    }
 
-    public abstract ArrayList<String> getTelephoneNumbers();
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-    public abstract void setTelephoneNumbers(ArrayList<String> telephoneNumbers);
+    public String getCity() {
+        return this.city;
+    }
 
-    public abstract void addTelephoneNumber(String number);
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public abstract void deleteTelephoneNumber(String number);
+    public String getPostalCode() {
+        return this.postalCode;
+    }
 
-    public abstract void setCountry(String country);
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
-    public abstract String getCity();
+    public String getEmail() {
+        return this.email;
+    }
 
-    public abstract void setCity(String city);
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public abstract String getPostalCode();
+    public void addTelephoneNumber(String number) {
+        this.telephoneNumbers.add(number);
+    }
 
-    public abstract void setPostalCode(String postalCode);
+    public void deleteTelephoneNumber(String number) {
+        this.telephoneNumbers.remove(this.telephoneNumbers.indexOf(number));
+    }
 
-    public abstract String getEmail();
+    public ArrayList<String> getTelephoneNumbers() {
+        return telephoneNumbers;
+    }
 
-    public abstract void setEmail(String email);
-
+    public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
+        this.telephoneNumbers = telephoneNumbers;
+    }
     public abstract String getInfo();
+    public abstract boolean equals(AddressBook a);
 }
