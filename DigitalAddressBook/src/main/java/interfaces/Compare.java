@@ -9,5 +9,6 @@ package interfaces;
  * @author Momen..G.Ar
  */
 public interface Compare {
+
     String[] compareBy(String s);
 }

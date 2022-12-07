@@ -57,7 +57,7 @@ public class Person extends AddressBook {
     public boolean equals(AddressBook a) {
         return a.getInfo().equals(this.getInfo());
     }
-    
+
     @Override
     public String getInfo() {
         String ret = "Name : " + this.firstName + ' ' + this.lastName

@@ -5,6 +5,7 @@
 package main;
 
 import classes.*;
+import GUI.*;
 
 /**
  * @author Momin Arafa && Tamim Salhab
@@ -16,19 +17,19 @@ public class Main {
         momen = new Person("Momin", "Arafa", new BirthDate(25, 6, 2002),
                 "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589");
         momen.addTelephoneNumber("0599676072");
-        
-        
+
         Contact contacts = new Contact();
         contacts.add(momen);
         contacts.add(new Business("Hello", "tektok", new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com","Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
+                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com", "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
         contacts.add(new Business("Hello", "tektok", new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com","Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
-        
-        for(String ss: contacts.compareBy("MominArafa@gmail.com"))
-        {
+                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com", "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
+
+        for (String ss : contacts.compareBy("MominArafa@gmail.com")) {
             System.out.println(ss);
         }
-        
+        // Try to use the frame
+        WelcomeFrame f = new WelcomeFrame();
+        f.setVisible(true);
     }
 }

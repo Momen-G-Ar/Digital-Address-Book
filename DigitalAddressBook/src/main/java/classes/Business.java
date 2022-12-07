@@ -68,7 +68,7 @@ public class Business extends AddressBook {
     public boolean equals(AddressBook a) {
         return a.getInfo().equals(this.getInfo());
     }
-       
+
     @Override
     public String getInfo() {
         String ret = "Contact Person Information : \n" + this.contactPerson.getInfo()

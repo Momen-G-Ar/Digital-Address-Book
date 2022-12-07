@@ -84,6 +84,8 @@ public abstract class AddressBook {
     public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
         this.telephoneNumbers = telephoneNumbers;
     }
+
     public abstract String getInfo();
+
     public abstract boolean equals(AddressBook a);
 }
