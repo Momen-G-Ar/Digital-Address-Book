@@ -77,6 +77,7 @@ public class Business extends AddressBook {
                 + "\nGenre : " + this.genre
                 + "\nCountry : " + super.getCountry() + ", City " + super.getCity()
                 + "\nEmail : " + super.getEmail()
+                + "\nWebsite : " + this.webSite
                 + "\nPostal Code : " + super.getPostalCode()
                 + "\nTelephone numbers :\n";
         for (String number : super.getTelephoneNumbers()) {
