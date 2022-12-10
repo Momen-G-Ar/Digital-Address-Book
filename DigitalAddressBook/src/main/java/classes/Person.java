@@ -15,15 +15,15 @@ public class Person extends AddressBook {
     private String lastName;
     private BirthDate personBirthDate;
 
-    public Person(String firstName, String lastName, BirthDate personBirthDate, String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers, int type) {
-        super(country, city, postalCode, email, telephoneNumbers, type);
+    public Person(String firstName, String lastName, BirthDate personBirthDate, String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers) {
+        super(country, city, postalCode, email, telephoneNumbers);
         this.firstName = firstName;
         this.lastName = lastName;
         this.personBirthDate = personBirthDate;
     }
 
-    public Person(String firstName, String lastName, BirthDate personBirthDate, String country, String city, String postalCode, String email, String TelephoneNumber, int type) {
-        super(country, city, postalCode, email, TelephoneNumber, type);
+    public Person(String firstName, String lastName, BirthDate personBirthDate, String country, String city, String postalCode, String email, String TelephoneNumber) {
+        super(country, city, postalCode, email, TelephoneNumber);
         this.firstName = firstName;
         this.lastName = lastName;
         this.personBirthDate = personBirthDate;
@@ -52,9 +52,11 @@ public class Person extends AddressBook {
     public void setPersonBirthDate(BirthDate personBirthDate) {
         this.personBirthDate = personBirthDate;
     }
-    public void searchForAPerson(String firstOrLast){
-        
+
+    public void searchForAPerson(String firstOrLast) {
+
     }
+
     @Override
     public boolean equals(AddressBook a) {
         return a.getInfo().equals(this.getInfo());

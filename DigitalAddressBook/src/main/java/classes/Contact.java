@@ -35,38 +35,59 @@ public class Contact implements Compare {
         numberOfContacts++;
     }
 
-    public void deleteBusiness(Business b) {
-        int indexToDelete = -1;
-        for (int i = 0; i < contact.size(); ++i) {
-            if (contact.get(i).equals(b)) {
-                indexToDelete = i;
-                break;
+    public void delete(int [] indices) {
+        try{
+            for(int index: indices)
+            {
+                contact.remove(index);
             }
-        }
-        if (indexToDelete != -1) {
-            contact.remove(indexToDelete);
+        }catch(Exception e){
+            // if there isn't any selected one so this may cause an exception and if it happen we didn't want to do anything
         }
     }
 
-    public void deletePerson(Person b) {
-        int indexToDelete = -1;
-        for (int i = 0; i < contact.size(); ++i) {
-            if (contact.get(i).equals(b)) {
-                indexToDelete = i;
-                break;
-            }
-        }
-        if (indexToDelete != -1) {
-            contact.remove(indexToDelete);
-        }
-    }
+//    public void deleteBusiness(Business b) {
+//        int indexToDelete = -1;
+//        for (int i = 0; i < contact.size(); ++i) {
+//            if (contact.get(i).equals(b)) {
+//                indexToDelete = i;
+//                break;
+//            }
+//        }
+//        if (indexToDelete != -1) {
+//            contact.remove(indexToDelete);
+//            numberOfContacts--;
+//        }
+//    }
+//
+//    public void deletePerson(Person b) {
+//        int indexToDelete = -1;
+//        for (int i = 0; i < contact.size(); ++i) {
+//            if (contact.get(i).equals(b)) {
+//                indexToDelete = i;
+//                break;
+//            }
+//        }
+//        if (indexToDelete != -1) {
+//            contact.remove(indexToDelete);
+//            numberOfContacts--;
+//        }
+//    }
 
     @Override
     public String[] compareBy(String s) {
         ArrayList<String> res = new ArrayList<>();
         for (AddressBook a : contact) {
-            if (a.getInfo().contains(s)) {
-                res.add(a.getInfo());
+            if (a instanceof Person) {
+                Person p = (Person) a;
+                if (p.getFirstName().contains(s) || p.getLastName().contains(s)) {
+                    res.add(a.getInfo());
+                }
+            } else {
+                Business b = (Business) a;
+                if (b.getTitle().contains(s)) {
+                    res.add(a.getInfo());
+                }
             }
         }
         String[] ans = new String[res.size()];
