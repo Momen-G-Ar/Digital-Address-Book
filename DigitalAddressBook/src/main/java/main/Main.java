@@ -28,7 +28,7 @@ public class Main {
             System.out.println(ss);
         }
         // Try to use the frame
-        WelcomeFrame f = new WelcomeFrame();
+        MainFrame f = new MainFrame();
         f.setVisible(true);
     }
 }
