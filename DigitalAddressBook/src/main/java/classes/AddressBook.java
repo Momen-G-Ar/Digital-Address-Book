@@ -16,29 +16,40 @@ public abstract class AddressBook {
     private String postalCode;
     private String email;
     private ArrayList<String> telephoneNumbers;
-
+    private int type;
+    
     // Two constructors 
     // Accept evety thing and the telephone is array list 
-    public AddressBook(String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers) {
+    public AddressBook(String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers, int type) {
         this.country = country;
         this.city = city;
         this.postalCode = postalCode;
         this.email = email;
         this.telephoneNumbers = telephoneNumbers;
+        this.type = type;
     }
 
     // Accept evety thing and the telephone is one number is integer 
-    public AddressBook(String country, String city, String postalCode, String email, String TelephoneNumber) {
+    public AddressBook(String country, String city, String postalCode, String email, String TelephoneNumber, int type) {
         this.country = country;
         this.city = city;
         this.postalCode = postalCode;
         this.email = email;
         this.telephoneNumbers = new ArrayList<>();
         this.telephoneNumbers.add(TelephoneNumber);
+        this.type = type;
     }
 
     public String getCountry() {
         return this.country;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public void setCountry(String country) {
@@ -84,7 +95,7 @@ public abstract class AddressBook {
     public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
         this.telephoneNumbers = telephoneNumbers;
     }
-
+    public abstract void display();
     public abstract String getInfo();
 
     public abstract boolean equals(AddressBook a);

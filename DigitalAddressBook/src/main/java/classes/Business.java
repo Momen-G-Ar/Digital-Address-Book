@@ -16,22 +16,22 @@ public class Business extends AddressBook {
     private Person contactPerson;
     private String webSite;
 
-    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers) {
-        super(country, city, postalCode, email, telephoneNumbers);
+    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers, int type) {
+        super(country, city, postalCode, email, telephoneNumbers, type);
         this.title = title;
         this.genre = genre;
         this.contactPerson = contactPerson;
         this.webSite = webSite;
     }
 
-    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, String TelephoneNumber) {
-        super(country, city, postalCode, email, TelephoneNumber);
+    public Business(String title, String genre, Person contactPerson, String webSite, String country, String city, String postalCode, String email, String TelephoneNumber, int type) {
+        super(country, city, postalCode, email, TelephoneNumber, type);
         this.title = title;
         this.genre = genre;
         this.contactPerson = contactPerson;
         this.webSite = webSite;
     }
-
+    
     public String getTitle() {
         return title;
     }
@@ -84,6 +84,12 @@ public class Business extends AddressBook {
             ret += number + "\n";
         }
         return ret;
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
 }

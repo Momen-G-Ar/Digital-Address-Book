@@ -13,18 +13,17 @@ import GUI.*;
 public class Main {
 
     public static void main(String[] args) {
+        // type 1 for person 
+        // type 2 for business
+        
         Person momen;
         momen = new Person("Momin", "Arafa", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589");
+                "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589", 1);
         momen.addTelephoneNumber("0599676072");
 
         Contact contacts = new Contact();
         contacts.add(momen);
-        contacts.add(new Business("Hello", "tektok", new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com", "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
-        contacts.add(new Business("Hello", "tektok", new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MomenArafeh@gmail.com", "0597456589"), "momen@gmail.com", "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589"));
-
+        
         for (String ss : contacts.compareBy("MominArafa@gmail.com")) {
             System.out.println(ss);
         }
