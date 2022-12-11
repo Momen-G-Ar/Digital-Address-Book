@@ -81,4 +81,9 @@ public class Person extends AddressBook {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
 }

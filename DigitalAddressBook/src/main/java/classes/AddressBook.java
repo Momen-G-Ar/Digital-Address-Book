@@ -89,5 +89,7 @@ public abstract class AddressBook {
 
     public abstract String getInfo();
 
+    public abstract String getFullName();
+
     public abstract boolean equals(AddressBook a);
 }
