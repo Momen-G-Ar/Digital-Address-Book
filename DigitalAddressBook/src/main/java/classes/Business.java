@@ -94,7 +94,7 @@ public class Business extends AddressBook {
 
     @Override
     public String getFullName() {
-        return this.title;
+        return getTitle();
     }
 
 }

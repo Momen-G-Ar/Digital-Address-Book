@@ -15,60 +15,46 @@ import java.util.ArrayList;
 public class Contact implements Compare {
 
     private static ArrayList<AddressBook> contact = new ArrayList<>();
-    static int numberOfContacts = 0;
     static int numOfBusinesses = 0, numOfPersons = 0;
-    
+
     public void add(AddressBook a) {
         if (a instanceof Person) {
-            this.addPerson((Person) a);
-            numOfPersons++;
+            addPerson((Person) a);
         } else {
-            this.addBusiness((Business) a);
-            numOfBusinesses++;
+            addBusiness((Business) a);
         }
     }
 
     public void addBusiness(Business b) {
         contact.add(b);
-        numberOfContacts++;
         numOfBusinesses++;
     }
-    public static void addBusiness(String title0, String genre0, String webSite0, Person p, String country, String city, String postalCode, String email, String tele ){
-        Business newBusiness = new Business(title0, genre0, p, webSite0, country, city, postalCode, email, tele);
-        contact.add(newBusiness);
-        numOfBusinesses++;
-    }
-    public static void addTelephoneNumber(int ind, String tele){
-        
-    }
-    public static int getNumOfBusinesses() {
+
+    public int getNumOfBusinesses() {
         return numOfBusinesses;
     }
 
-    public static int getNumOfPersons() {
+    public int getNumOfPersons() {
         return numOfPersons;
     }
 
-    public static void addPerson(String firstName, String lastName, BirthDate bd, String country, String city, String postalCode, String email, String telephoneNumber) {
-        
-        Person p = new Person(firstName, lastName, bd, country,city, postalCode, email, telephoneNumber);
+    public void addPerson(String firstName, String lastName, BirthDate bd, String country, String city, String postalCode, String email, String telephoneNumber) {
+        Person p = new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber);
         contact.add(p);
-        numberOfContacts++;
         numOfPersons++;
     }
-    public void addPerson(Person p){
-       contact.add(p);
-       numberOfContacts++; 
-       numOfPersons++;
+
+    public void addPerson(Person p) {
+        contact.add(p);
+        numOfPersons++;
     }
 
-    public void delete(int [] indices) {
-        try{
-            for(int index: indices)
-            {
+    public void delete(int[] indices) {
+        try {
+            for (int index : indices) {
                 contact.remove(index);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             // if there isn't any selected one so this may cause an exception and if it happen we didn't want to do anything
         }
     }
@@ -100,8 +86,6 @@ public class Contact implements Compare {
 //            numberOfContacts--;
 //        }
 //    }
-    
-
     public static ArrayList<AddressBook> getContact() {
         return contact;
     }
@@ -112,13 +96,13 @@ public class Contact implements Compare {
         for (AddressBook a : contact) {
             if (a instanceof Person) {
                 Person p = (Person) a;
-                if (p.getFirstName().contains(s) || p.getLastName().contains(s)) {
-                    res.add(a.getInfo());
+                if (p.getFirstName().contains(s) || p.getLastName().contains(s) || s.equals("")) {
+                    res.add(a.getFullName());
                 }
             } else {
                 Business b = (Business) a;
-                if (b.getTitle().contains(s)) {
-                    res.add(a.getInfo());
+                if (b.getTitle().contains(s) || s.equals("")) {
+                    res.add(b.getTitle());
                 }
             }
         }

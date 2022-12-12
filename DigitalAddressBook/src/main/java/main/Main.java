@@ -13,21 +13,6 @@ import GUI.*;
 public class Main {
 
     public static void main(String[] args) {
-        // type 1 for person 
-        // type 2 for business
-
-        Person momen;
-        momen = new Person("Momin", "Arafa", new BirthDate(25, 6, 2002),
-                "Palestine", " Hebron", "9020000", "MominArafa@gmail.com", "0597456589");
-        momen.addTelephoneNumber("0599676072");
-
-        Contact contacts = new Contact();
-        contacts.add(momen);
-
-        for (String ss : contacts.compareBy("MominArafa@gmail.com")) {
-            System.out.println(ss);
-        }
-        // Try to use the frame
         MainFrame f = new MainFrame();
         f.setVisible(true);
     }
