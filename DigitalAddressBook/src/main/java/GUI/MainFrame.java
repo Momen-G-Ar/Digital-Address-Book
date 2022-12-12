@@ -6,6 +6,7 @@ package GUI;
 
 import classes.*;
 import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -834,7 +835,12 @@ public class MainFrame extends javax.swing.JFrame {
         String postalCode = postalCode1.getText();
         String email = email1.getText();
         String telephoneNumber = telephoneNumber1.getText();
-        contacts.add(new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber));
+        if(firstName.equals("") || lastName.equals("") || country.equals("") || city.equals("") || postalCode.equals("") || email.equals("") || telephoneNumber.equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please fill all the fields");
+        }
+        else{
+            contacts.add(new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber));
+        }
         displayAll();
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -872,7 +878,13 @@ public class MainFrame extends javax.swing.JFrame {
         String email = email2.getText();
         String telephoneNumber = telephoneNumber2.getText();
         Person newPerson = new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber);
-        contacts.add(new Business(title, genre, newPerson, webSite, country, city, postalCode, email, telephoneNumber));
+        if(firstName.equals("") || lastName.equals("") || country.equals("") || city.equals("") || postalCode.equals("") || email.equals("") || telephoneNumber.equals("")
+        || genre.equals("") || title.equals("") || webSite.equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please fill all the fields");
+        }
+        else{
+            contacts.add(new Business(title, genre, newPerson, webSite, country, city, postalCode, email, telephoneNumber));
+        }
         displayAll();
     }//GEN-LAST:event_addBusinessActionPerformed
 
@@ -883,9 +895,9 @@ public class MainFrame extends javax.swing.JFrame {
     private void addTelephoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTelephoneActionPerformed
         int ind = showList.getSelectedIndex();
         if (ind != -1) {
-
-            String inputValue = JOptionPane.showInputDialog("Please input a value");
-
+            String inputValue = JOptionPane.showInputDialog("Please input a Telephone Number");
+            classes.Contact.getContact().get(ind).addTelephoneNumber(inputValue);
+            detailsTextArea.setText(contacts.getContact().get(ind).getInfo());
         }
     }//GEN-LAST:event_addTelephoneActionPerformed
 

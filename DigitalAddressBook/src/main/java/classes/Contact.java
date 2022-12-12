@@ -73,7 +73,6 @@ public class Contact implements Compare, Serializable {
     public static ArrayList<AddressBook> getContact() {
         return contact;
     }
-
     @Override
     public String[] compareBy(String s) {
         ArrayList<String> res = new ArrayList<>();
