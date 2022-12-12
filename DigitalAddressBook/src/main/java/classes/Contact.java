@@ -5,14 +5,17 @@
 package classes;
 
 import interfaces.*;
+import java.io.IOException;
+import java.io.Serializable;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Momen..G.Ar
  */
-public class Contact implements Compare {
+public class Contact implements Compare, Serializable {
 
     private static ArrayList<AddressBook> contact = new ArrayList<>();
     static int numOfBusinesses = 0, numOfPersons = 0;
@@ -23,6 +26,14 @@ public class Contact implements Compare {
         } else {
             addBusiness((Business) a);
         }
+    }
+
+    public String[] getAllContacts() {
+        String s[] = new String[contact.size()];
+        for (int i = 0; i < contact.size(); i++) {
+            s[i] = contact.get(i).getInfo();
+        }
+        return s;
     }
 
     public void addBusiness(Business b) {
@@ -59,33 +70,6 @@ public class Contact implements Compare {
         }
     }
 
-//    public void deleteBusiness(Business b) {
-//        int indexToDelete = -1;
-//        for (int i = 0; i < contact.size(); ++i) {
-//            if (contact.get(i).equals(b)) {
-//                indexToDelete = i;
-//                break;
-//            }
-//        }
-//        if (indexToDelete != -1) {
-//            contact.remove(indexToDelete);
-//            numberOfContacts--;
-//        }
-//    }
-//
-//    public void deletePerson(Person b) {
-//        int indexToDelete = -1;
-//        for (int i = 0; i < contact.size(); ++i) {
-//            if (contact.get(i).equals(b)) {
-//                indexToDelete = i;
-//                break;
-//            }
-//        }
-//        if (indexToDelete != -1) {
-//            contact.remove(indexToDelete);
-//            numberOfContacts--;
-//        }
-//    }
     public static ArrayList<AddressBook> getContact() {
         return contact;
     }
@@ -111,5 +95,21 @@ public class Contact implements Compare {
             ans[i] = res.get(i);
         }
         return ans;
+    }
+
+    public void writeDataToFile() {
+        try {
+            Common.SerializationUtil.serialize(contact, "src\\main\\java\\data\\data.txt");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public void readDataFromFile() {
+        try {
+            contact = (ArrayList<AddressBook>) Common.SerializationUtil.deserialize("src\\main\\java\\data\\data.txt");
+        } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 }

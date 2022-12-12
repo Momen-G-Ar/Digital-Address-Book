@@ -4,12 +4,13 @@
  */
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public abstract class AddressBook {
+public abstract class AddressBook implements Serializable {
 
     private String country;
     private String city;

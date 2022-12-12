@@ -4,12 +4,13 @@
  */
 package classes;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public class BirthDate {
+public class BirthDate implements Serializable{
 
     private int day, month, year;
 
