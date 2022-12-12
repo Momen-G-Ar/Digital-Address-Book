@@ -17,6 +17,7 @@ public class Contact implements Compare {
     private static ArrayList<AddressBook> contact = new ArrayList<>();
     static int numberOfContacts = 0;
     static int numOfBusinesses = 0, numOfPersons = 0;
+    
     public void add(AddressBook a) {
         if (a instanceof Person) {
             this.addPerson((Person) a);
@@ -32,13 +33,14 @@ public class Contact implements Compare {
         numberOfContacts++;
         numOfBusinesses++;
     }
-    public static void addBusiness(String title0, String genre0, String webSite0, Person p, String country, String city, String postalCode, String email, ArrayList<String> tele ){
+    public static void addBusiness(String title0, String genre0, String webSite0, Person p, String country, String city, String postalCode, String email, String tele ){
         Business newBusiness = new Business(title0, genre0, p, webSite0, country, city, postalCode, email, tele);
         contact.add(newBusiness);
         numOfBusinesses++;
-
     }
-    
+    public static void addTelephoneNumber(int ind, String tele){
+        
+    }
     public static int getNumOfBusinesses() {
         return numOfBusinesses;
     }
