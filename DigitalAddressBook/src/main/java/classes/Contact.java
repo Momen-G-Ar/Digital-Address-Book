@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Momen..G.Ar
+ * @author Momin Arafa && Tamim Salhab
  */
 public class Contact implements Compare, Serializable {
 

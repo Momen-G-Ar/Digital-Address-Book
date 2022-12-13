@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Momen..G.Ar
+ * @author Momin Arafa && Tamim Salhab
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -213,7 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(showC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         showC.getAccessibleContext().setAccessibleName("Show all contacts");
@@ -390,18 +390,15 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jButton7)
                             .addComponent(delete1)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton10)
-                            .addComponent(jButton11)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addTelephone)
-                            .addComponent(home1))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton10)
+                        .addComponent(jButton11))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(addTelephone)
+                        .addComponent(home1)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -791,7 +788,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(telephoneNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8)
                     .addComponent(jButton9))
@@ -816,7 +813,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(previewTab, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(previewTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
         );
 
         previewTab.getAccessibleContext().setAccessibleName("Input Tap");
@@ -882,7 +879,7 @@ public class MainFrame extends javax.swing.JFrame {
         String lastName = lastName1.getText();
         int day = day1.getSelectedIndex() + 1;
         int month = month1.getSelectedIndex() + 1;
-        int year = year1.getSelectedIndex() + 1851;
+        int year = year1.getSelectedIndex() + 1850;
         BirthDate bd = new BirthDate(day, month, year);
         String country = country1.getText();
         String city = city1.getText();
@@ -891,8 +888,21 @@ public class MainFrame extends javax.swing.JFrame {
         String telephoneNumber = telephoneNumber1.getText();
         if (firstName.equals("") || lastName.equals("") || country.equals("") || city.equals("") || postalCode.equals("") || email.equals("") || telephoneNumber.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please fill all the fields");
+        } else if (!classes.BirthDate.valid(day, month, year)) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid Birth Date\nEnter Valid Date");
         } else {
             contacts.add(new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber));
+
+            firstName1.setText("");
+            lastName1.setText("");
+            day1.setSelectedIndex(0);
+            month1.setSelectedIndex(0);
+            year1.setSelectedIndex(0);
+            country1.setText("");
+            city1.setText("");
+            postalCode1.setText("");
+            email1.setText("");
+            telephoneNumber1.setText("");
         }
         displayAll();
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -923,7 +933,7 @@ public class MainFrame extends javax.swing.JFrame {
         String lastName = lastName2.getText();
         int day = day2.getSelectedIndex() + 1;
         int month = month2.getSelectedIndex() + 1;
-        int year = year2.getSelectedIndex() + 1851;
+        int year = year2.getSelectedIndex() + 1850;
         BirthDate bd = new BirthDate(day, month, year);
         String country = country2.getText();
         String city = city2.getText();
@@ -934,8 +944,24 @@ public class MainFrame extends javax.swing.JFrame {
         if (firstName.equals("") || lastName.equals("") || country.equals("") || city.equals("") || postalCode.equals("") || email.equals("") || telephoneNumber.equals("")
                 || genre.equals("") || title.equals("") || webSite.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please fill all the fields");
+        } else if (!classes.BirthDate.valid(day, month, year)) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid Birth Date\nEnter Valid Date");
         } else {
             contacts.add(new Business(title, genre, newPerson, webSite, country, city, postalCode, email, telephoneNumber));
+
+            genre2.setText("");
+            title2.setText("");
+            website2.setText("");
+            firstName2.setText("");
+            lastName2.setText("");
+            day2.setSelectedIndex(0);
+            month2.setSelectedIndex(0);
+            year2.setSelectedIndex(0);
+            country2.setText("");
+            city2.setText("");
+            postalCode2.setText("");
+            email2.setText("");
+            telephoneNumber2.setText("");
         }
         displayAll();
     }//GEN-LAST:event_addBusinessActionPerformed

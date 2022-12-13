@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author Momen..G.Ar
+ * @author Momin Arafa && Tamim Salhab
  */
 public class SerializationUtil {
 

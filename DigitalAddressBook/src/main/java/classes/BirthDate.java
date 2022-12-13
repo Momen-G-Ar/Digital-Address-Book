@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public class BirthDate implements Serializable{
+public class BirthDate implements Serializable {
 
     private int day, month, year;
 
@@ -85,7 +85,7 @@ public class BirthDate implements Serializable{
     }
 
     // To check if the day, month, and year is valid
-    private boolean valid(int d, int m, int y) {
+    public static boolean valid(int d, int m, int y) {
         boolean ok = true;
 
         ok = (m >= 1 || m <= 12);
@@ -98,7 +98,6 @@ public class BirthDate implements Serializable{
         if (m == 2) {
             ok &= ((y % 4 == 0) ? (d >= 1 && d <= 29) : (d >= 1 && d <= 28));
         }
-
         ok &= (y >= 1850 && y <= 2022);
 
         return ok;
