@@ -4,93 +4,122 @@
  */
 package classes;
 
+import interfaces.*;
+import java.io.IOException;
 import java.io.Serializable;
+
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
+ *
  * @author Momin Arafa && Tamim Salhab
  */
-public abstract class AddressBook implements Serializable {
+public class AddressBook implements Compare, Serializable {
 
-    private String country;
-    private String city;
-    private String postalCode;
-    private String email;
-    private ArrayList<String> telephoneNumbers;
+    private static ArrayList<Contact> contacts = new ArrayList<>();
 
-    // Two constructors 
-    // Accept evety thing and the telephone is array list 
-    public AddressBook(String country, String city, String postalCode, String email, ArrayList<String> telephoneNumbers) {
-        this.country = country;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.email = email;
-        this.telephoneNumbers = telephoneNumbers;
+    public void add(Contact a) {
+        if (a instanceof Person) {
+            addPerson((Person) a);
+        } else {
+            addBusiness((Business) a);
+        }
     }
 
-    // Accept evety thing and the telephone is one number is integer 
-    public AddressBook(String country, String city, String postalCode, String email, String TelephoneNumber) {
-        this.country = country;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.email = email;
-        this.telephoneNumbers = new ArrayList<>();
-        this.telephoneNumbers.add(TelephoneNumber);
+    public String[] getAllContacts() {
+        String s[] = new String[contacts.size()];
+        for (int i = 0; i < contacts.size(); i++) {
+            s[i] = contacts.get(i).getInfo();
+        }
+        return s;
     }
 
-    public String getCountry() {
-        return this.country;
+    public void addBusiness(Business b) {
+        contacts.add(b);
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public int getNumOfBusinesses() {
+        int numOfBusinesses = 0;
+        for (Contact a : contacts) {
+            if (a instanceof Business) {
+                numOfBusinesses++;
+            }
+        }
+        return numOfBusinesses;
     }
 
-    public String getCity() {
-        return this.city;
+    public int getNumOfPersons() {
+        int numOfPersons = 0;
+        for (Contact a : contacts) {
+            if (a instanceof Person) {
+                numOfPersons++;
+            }
+        }
+        return numOfPersons;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void addPerson(String firstName, String lastName, BirthDate bd, String country, String city, String postalCode, String email, String telephoneNumber) {
+        Person p = new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber);
+        contacts.add(p);
     }
 
-    public String getPostalCode() {
-        return this.postalCode;
+    public void addPerson(Person p) {
+        contacts.add(p);
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void delete(int[] indices) {
+        try {
+            for (int index : indices) {
+                contacts.remove(index);
+            }
+        } catch (Exception e) {
+            // if there isn't any selected one so this may cause an exception and if it happen we didn't want to do anything
+        }
     }
 
-    public String getEmail() {
-        return this.email;
+    public static ArrayList<Contact> getContact() {
+        return contacts;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public String[] compareBy(String s) {
+        ArrayList<String> res = new ArrayList<>();
+        for (Contact a : contacts) {
+            if (a instanceof Person) {
+                Person p = (Person) a;
+                if (p.getFirstName().contains(s) || p.getLastName().contains(s) || s.equals("")) {
+                    res.add(a.getFullName());
+                }
+            } else {
+                Business b = (Business) a;
+                if (b.getTitle().contains(s) || s.equals("")) {
+                    res.add(b.getTitle());
+                }
+            }
+        }
+        String[] ans = new String[res.size()];
+        for (int i = 0; i < res.size(); ++i) {
+            ans[i] = res.get(i);
+        }
+        return ans;
     }
 
-    public void addTelephoneNumber(String number) {
-        this.telephoneNumbers.add(number);
+    public void writeDataToFile() {
+        try {
+            Common.SerializationUtil.serialize((ArrayList<Contact>) contacts, "src\\main\\java\\data\\data.txt");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "serialize");
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
-    public void deleteTelephoneNumber(String number) {
-        this.telephoneNumbers.remove(this.telephoneNumbers.indexOf(number));
+    public void readDataFromFile() {
+        try {
+            contacts = (ArrayList<Contact>) Common.SerializationUtil.deserialize("src\\main\\java\\data\\data.txt");
+        } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "deserialize");
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
-
-    public ArrayList<String> getTelephoneNumbers() {
-        return telephoneNumbers;
-    }
-
-    public void setTelephoneNumbers(ArrayList<String> telephoneNumbers) {
-        this.telephoneNumbers = telephoneNumbers;
-    }
-
-    public abstract void display();
-
-    public abstract String getInfo();
-
-    public abstract String getFullName();
-
-    public abstract boolean equals(AddressBook a);
 }

@@ -20,7 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
     }
-    Contact contacts = new Contact();
+    AddressBook addressBook = new AddressBook();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,18 +30,18 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
 
     public void displayAll() {
-        int len = contacts.getContact().size();
+        int len = addressBook.getContact().size();
         String arr[] = new String[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = contacts.getContact().get(i).getFullName();
+            arr[i] = addressBook.getContact().get(i).getFullName();
         }
         showList.setListData(arr);
     }
 
     public void displayBusinesses() {
-        String arr[] = new String[contacts.getNumOfBusinesses()];
+        String arr[] = new String[addressBook.getNumOfBusinesses()];
         int i = 0;
-        for (AddressBook a : contacts.getContact()) {
+        for (Contact a : addressBook.getContact()) {
             if (a instanceof Business) {
                 arr[i++] = a.getFullName();
             }
@@ -50,9 +50,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void displayPersons() {
-        String arr[] = new String[contacts.getNumOfPersons()];
+        String arr[] = new String[addressBook.getNumOfPersons()];
         int i = 0;
-        for (AddressBook a : contacts.getContact()) {
+        for (Contact a : addressBook.getContact()) {
             if (a instanceof Person) {
                 arr[i++] = a.getFullName();
             }
@@ -750,9 +750,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(genre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(website2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(website2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
@@ -865,7 +865,7 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int ind = showList.getSelectedIndex();
         if (ind != -1) {
-            contacts.getContact().remove(contacts.getContact().get(ind));
+            addressBook.getContact().remove(addressBook.getContact().get(ind));
             displayAll();
             detailsTextArea.setText("");
         }
@@ -897,7 +897,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else if (!classes.BirthDate.valid(day, month, year)) {
             JOptionPane.showMessageDialog(rootPane, "Invalid Birth Date\nEnter Valid Date");
         } else {
-            contacts.add(new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber));
+            addressBook.add(new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber));
 
             firstName1.setText("");
             lastName1.setText("");
@@ -926,7 +926,7 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int ind = showList.getSelectedIndex();
         if (ind != -1) {
-            detailsTextArea.setText(contacts.getContact().get(ind).getInfo());
+            detailsTextArea.setText(addressBook.getContact().get(ind).getInfo());
         }
     }//GEN-LAST:event_showListValueChanged
 
@@ -953,7 +953,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else if (!classes.BirthDate.valid(day, month, year)) {
             JOptionPane.showMessageDialog(rootPane, "Invalid Birth Date\nEnter Valid Date");
         } else {
-            contacts.add(new Business(title, genre, newPerson, webSite, country, city, postalCode, email, telephoneNumber));
+            addressBook.add(new Business(title, genre, newPerson, webSite, country, city, postalCode, email, telephoneNumber));
 
             genre2.setText("");
             title2.setText("");
@@ -981,9 +981,9 @@ public class MainFrame extends javax.swing.JFrame {
         if (ind != -1) {
             String inputValue = JOptionPane.showInputDialog(rootPane, "Please input a Telephone Number");
             if (!inputValue.equals("")) {
-                contacts.getContact().get(ind).addTelephoneNumber(inputValue);
+                addressBook.getContact().get(ind).addTelephoneNumber(inputValue);
             }
-            detailsTextArea.setText(contacts.getContact().get(ind).getInfo());
+            detailsTextArea.setText(addressBook.getContact().get(ind).getInfo());
         }
     }//GEN-LAST:event_addTelephoneActionPerformed
 
@@ -1002,7 +1002,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         // TODO add your handling code here:
         String search = jTextField1.getText();
-        showList.setListData(contacts.compareBy(search));
+        showList.setListData(addressBook.compareBy(search));
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1012,13 +1012,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        contacts.readDataFromFile();
+        addressBook.readDataFromFile();
         displayAll();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        contacts.writeDataToFile();
+        addressBook.writeDataToFile();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public class Person extends AddressBook {
+public class Person extends Contact {
 
     private String firstName;
     private String lastName;
@@ -58,7 +58,7 @@ public class Person extends AddressBook {
     }
 
     @Override
-    public boolean equals(AddressBook a) {
+    public boolean equals(Contact a) {
         return a.getInfo().equals(this.getInfo());
     }
 

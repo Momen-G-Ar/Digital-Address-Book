@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * @author Momin Arafa && Tamim Salhab
  */
-public class Business extends AddressBook {
+public class Business extends Contact {
 
     private String title;
     private String genre;
@@ -65,7 +65,7 @@ public class Business extends AddressBook {
     }
 
     @Override
-    public boolean equals(AddressBook a) {
+    public boolean equals(Contact a) {
         return a.getInfo().equals(this.getInfo());
     }
 
