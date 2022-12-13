@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        Contact c = new Contact();
-        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
-        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
-        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
-        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
+    public static void main(String[] args) {
+//        Contact c = new Contact();
+//        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
+//        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
+//        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
+//        c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
 
 //        try {
 //            Common.SerializationUtil.serialize(c, "src\\main\\java\\data\\data.txt");

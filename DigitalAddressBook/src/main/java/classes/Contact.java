@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 public class Contact implements Compare, Serializable {
 
     private static ArrayList<AddressBook> contact = new ArrayList<>();
-    static int numOfBusinesses = 0, numOfPersons = 0;
 
     public void add(AddressBook a) {
         if (a instanceof Person) {
@@ -38,26 +37,35 @@ public class Contact implements Compare, Serializable {
 
     public void addBusiness(Business b) {
         contact.add(b);
-        numOfBusinesses++;
     }
 
     public int getNumOfBusinesses() {
+        int numOfBusinesses = 0;
+        for (AddressBook a : contact) {
+            if (a instanceof Business) {
+                numOfBusinesses++;
+            }
+        }
         return numOfBusinesses;
     }
 
     public int getNumOfPersons() {
+        int numOfPersons = 0;
+        for (AddressBook a : contact) {
+            if (a instanceof Person) {
+                numOfPersons++;
+            }
+        }
         return numOfPersons;
     }
 
     public void addPerson(String firstName, String lastName, BirthDate bd, String country, String city, String postalCode, String email, String telephoneNumber) {
         Person p = new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber);
         contact.add(p);
-        numOfPersons++;
     }
 
     public void addPerson(Person p) {
         contact.add(p);
-        numOfPersons++;
     }
 
     public void delete(int[] indices) {
@@ -99,7 +107,7 @@ public class Contact implements Compare, Serializable {
 
     public void writeDataToFile() {
         try {
-            Common.SerializationUtil.serialize(contact, "src\\main\\java\\data\\data.txt");
+            Common.SerializationUtil.serialize((ArrayList<AddressBook>) contact, "src\\main\\java\\data\\data.txt");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "serialize");
             JOptionPane.showMessageDialog(null, e.getMessage());
