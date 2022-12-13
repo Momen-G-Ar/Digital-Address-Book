@@ -73,6 +73,7 @@ public class Contact implements Compare, Serializable {
     public static ArrayList<AddressBook> getContact() {
         return contact;
     }
+
     @Override
     public String[] compareBy(String s) {
         ArrayList<String> res = new ArrayList<>();
@@ -100,6 +101,7 @@ public class Contact implements Compare, Serializable {
         try {
             Common.SerializationUtil.serialize(contact, "src\\main\\java\\data\\data.txt");
         } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "serialize");
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
@@ -108,6 +110,7 @@ public class Contact implements Compare, Serializable {
         try {
             contact = (ArrayList<AddressBook>) Common.SerializationUtil.deserialize("src\\main\\java\\data\\data.txt");
         } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "deserialize");
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }

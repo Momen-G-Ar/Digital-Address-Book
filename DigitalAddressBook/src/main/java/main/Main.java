@@ -21,14 +21,14 @@ public class Main {
         c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
         c.add(new Person("Momen", "Arafeh", new BirthDate(25, 6, 2002), "Palestine", "Hebron", "s234", "mosamf", "23456"));
 
-        try {
-            Common.SerializationUtil.serialize(c, "src\\main\\java\\Files\\data.txt");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        Contact c2;
 //        try {
-//            c2 = (Contact) Common.SerializationUtil.deserialize("src\\main\\java\\Files\\data.txt");
+//            Common.SerializationUtil.serialize(c, "src\\main\\java\\data\\data.txt");
+//        } catch (IOException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//        Contact c2;
+//        try {
+//            c2 = (Contact) Common.SerializationUtil.deserialize("src\\main\\java\\data\\data.txt");
 //            JOptionPane.showMessageDialog(null, c2.getAllContacts());
 //        } catch (IOException e) {
 //            JOptionPane.showMessageDialog(null, e.getMessage());
