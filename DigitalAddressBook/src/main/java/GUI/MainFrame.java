@@ -337,10 +337,10 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(50, 50, 50)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addComponent(jButton10)
-                    .addGap(47, 47, 47)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton11))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -639,6 +639,12 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
     jLabel29.setText("Email");
 
     jLabel30.setText("Telephone Number");
+
+    telephoneNumber2.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            telephoneNumber2KeyTyped(evt);
+        }
+    });
 
     day2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
@@ -1055,7 +1061,21 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
 
     private void telephoneNumber1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber1KeyTyped
         // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||(c == java.awt.event.KeyEvent.VK_BACK_SPACE) || (c == java.awt.event.KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
     }//GEN-LAST:event_telephoneNumber1KeyTyped
+
+    private void telephoneNumber2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||(c == java.awt.event.KeyEvent.VK_BACK_SPACE) || (c == java.awt.event.KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_telephoneNumber2KeyTyped
 
     /**
      * @param args the command line arguments
