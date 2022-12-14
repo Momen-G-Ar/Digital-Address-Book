@@ -22,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
     }
     AddressBook addressBook = new AddressBook();
-    boolean showAll = true, showPersons = false, showBusinesses = false;
+    boolean showAll = true, showPersons = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +43,25 @@ public class MainFrame extends javax.swing.JFrame {
         showList.setListData(addressBook.getAllPersons());
     }
 
+    public void handleTextChange(java.awt.event.KeyEvent evt, javax.swing.JTextField t) {
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9')
+                || (c == java.awt.event.KeyEvent.VK_BACK_SPACE)
+                || (c == java.awt.event.KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+        String s = t.getText();
+        if (s.length() >= 10) {
+            t.setText(s.substring(0, 9));
+        }
+        else
+            t.setText(s);
+    }
+
+    public boolean isDigit(char c) {
+        return (c >= '0' && c <= '9');
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -73,6 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -185,7 +205,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,47 +351,57 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
         }
     });
 
+    jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextField2ActionPerformed(evt);
+        }
+    });
+    jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            jTextField2KeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextField2KeyTyped(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(50, 50, 50)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                 .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(home1))
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jButton10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton11))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGap(80, 80, 80)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel32)
-                                .addComponent(jLabel3)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton10)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton11))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
+            .addGap(80, 80, 80)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addComponent(jTextField1)
+                    .addGap(18, 18, 18)
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(home1)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(addTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGap(52, 52, 52))
+                                .addComponent(addTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField2))))))
+            .addContainerGap(37, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,9 +421,9 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton5)
-                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton6)
+                        .addComponent(jButton5))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton7)
@@ -404,10 +434,12 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
-                .addComponent(addTelephone))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTelephone)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
             .addComponent(home1)
-            .addGap(17, 17, 17))
+            .addGap(19, 19, 19))
     );
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -478,6 +510,12 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
         }
     });
     telephoneNumber1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            telephoneNumber1KeyPressed(evt);
+        }
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            telephoneNumber1KeyReleased(evt);
+        }
         public void keyTyped(java.awt.event.KeyEvent evt) {
             telephoneNumber1KeyTyped(evt);
         }
@@ -545,7 +583,7 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lastName1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(firstName1)))
-                    .addContainerGap(14, Short.MAX_VALUE))))
+                    .addContainerGap(44, Short.MAX_VALUE))))
     );
     jPanel5Layout.setVerticalGroup(
         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,6 +684,9 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
     jLabel30.setText("Telephone Number");
 
     telephoneNumber2.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            telephoneNumber2KeyReleased(evt);
+        }
         public void keyTyped(java.awt.event.KeyEvent evt) {
             telephoneNumber2KeyTyped(evt);
         }
@@ -721,11 +762,12 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
                                         .addComponent(jLabel23)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(day2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(postalCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(email2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(city2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(country2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(postalCode2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(email2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(city2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(country2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(telephoneNumber2, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(lastName2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(genre2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -749,11 +791,8 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
                                     .addComponent(jLabel34))))))
                 .addComponent(jLabel19)
                 .addComponent(jLabel17)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(telephoneNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(63, Short.MAX_VALUE))
     );
     jPanel6Layout.setVerticalGroup(
         jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -867,7 +906,6 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         showAll = false;
         showPersons = true;
-        showBusinesses = false;
         displayPersons();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -941,14 +979,12 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
         // TODO add your handling code here:
         showAll = true;
         showPersons = false;
-        showBusinesses = false;
         displayAll();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         showAll = false;
         showPersons = false;
-        showBusinesses = true;
         displayBusinesses();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1010,9 +1046,8 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
     private void addTelephoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTelephoneActionPerformed
         int ind = showList.getSelectedIndex();
         if (ind != -1) {
-            
-            String inputValue = JOptionPane.showInputDialog(rootPane, "Please input a Telephone Number");
-            if (inputValue!= null && !inputValue.equals("")) {
+            String inputValue = jTextField2.getText();
+            if (inputValue != null && !inputValue.equals("")) {
                 addressBook.getContacts().get(ind).addTelephoneNumber(inputValue);
             }
             detailsTextArea.setText(addressBook.getContacts().get(ind).getInfo());
@@ -1066,21 +1101,42 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
 
     private void telephoneNumber1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber1KeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9') ||(c == java.awt.event.KeyEvent.VK_BACK_SPACE) || (c == java.awt.event.KeyEvent.VK_DELETE))) {
-            getToolkit().beep();
-            evt.consume();
-        }
+        handleTextChange(evt, telephoneNumber1);
     }//GEN-LAST:event_telephoneNumber1KeyTyped
 
     private void telephoneNumber2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber2KeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9') ||(c == java.awt.event.KeyEvent.VK_BACK_SPACE) || (c == java.awt.event.KeyEvent.VK_DELETE))) {
-            getToolkit().beep();
-            evt.consume();
-        }
+        handleTextChange(evt, telephoneNumber2);
+
+
     }//GEN-LAST:event_telephoneNumber2KeyTyped
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        handleTextChange(evt, jTextField2);
+
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void telephoneNumber1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telephoneNumber1KeyReleased
+
+    private void telephoneNumber2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telephoneNumber2KeyReleased
+
+    private void telephoneNumber1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telephoneNumber1KeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_telephoneNumber1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -1197,6 +1253,7 @@ jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField lastName1;
     private javax.swing.JTextField lastName2;
     private javax.swing.JComboBox<String> month1;
