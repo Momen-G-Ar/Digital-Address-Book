@@ -86,8 +86,6 @@ public abstract class Contact implements Serializable {
         this.telephoneNumbers = telephoneNumbers;
     }
 
-    public abstract void display();
-
     public abstract String getInfo();
 
     public abstract String getFullName();

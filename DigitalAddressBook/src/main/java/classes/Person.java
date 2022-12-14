@@ -53,10 +53,6 @@ public class Person extends Contact {
         this.personBirthDate = personBirthDate;
     }
 
-    public void searchForAPerson(String firstOrLast) {
-
-    }
-
     @Override
     public boolean equals(Contact a) {
         return a.getInfo().equals(this.getInfo());
@@ -74,11 +70,6 @@ public class Person extends Contact {
             ret += number + "\n";
         }
         return ret;
-    }
-
-    @Override
-    public void display() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

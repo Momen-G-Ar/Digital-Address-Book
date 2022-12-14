@@ -9,12 +9,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +19,10 @@ import javax.swing.JOptionPane;
 public class AddressBook implements Compare, Serializable {
 
     private static ArrayList<Contact> contacts = new ArrayList<>();
+
+    public static ArrayList<Contact> getContacts() {
+        return contacts;
+    }
 
     public void sort() {
         contacts.sort(new Comparator<Contact>() {
@@ -42,57 +41,7 @@ public class AddressBook implements Compare, Serializable {
                 }
                 return s1.compareToIgnoreCase(s2);
             }
-
-            @Override
-            public Comparator<Contact> reversed() {
-                return Comparator.super.reversed(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public Comparator<Contact> thenComparing(Comparator<? super Contact> other) {
-                return Comparator.super.thenComparing(other); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public <U> Comparator<Contact> thenComparing(Function<? super Contact, ? extends U> keyExtractor, Comparator<? super U> keyComparator) {
-                return Comparator.super.thenComparing(keyExtractor, keyComparator); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public <U extends Comparable<? super U>> Comparator<Contact> thenComparing(Function<? super Contact, ? extends U> keyExtractor) {
-                return Comparator.super.thenComparing(keyExtractor); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public Comparator<Contact> thenComparingInt(ToIntFunction<? super Contact> keyExtractor) {
-                return Comparator.super.thenComparingInt(keyExtractor); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public Comparator<Contact> thenComparingLong(ToLongFunction<? super Contact> keyExtractor) {
-                return Comparator.super.thenComparingLong(keyExtractor); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-
-            @Override
-            public Comparator<Contact> thenComparingDouble(ToDoubleFunction<? super Contact> keyExtractor) {
-                return Comparator.super.thenComparingDouble(keyExtractor); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
         });
-    }
-
-    public int comparator(Contact c1, Contact c2) {
-        String s1, s2;
-        if (c1 instanceof Business) {
-            s1 = ((Business) c1).getTitle();
-        } else {
-            s1 = ((Person) c1).getLastName();
-        }
-        if (c2 instanceof Business) {
-            s2 = ((Business) c2).getTitle();
-        } else {
-            s2 = ((Person) c2).getLastName();
-        }
-        return s1.compareToIgnoreCase(s2);
     }
 
     public String[] getAllContactsWithInfo() {
@@ -147,6 +96,10 @@ public class AddressBook implements Compare, Serializable {
         contacts.add(b);
     }
 
+    public void addPerson(Person p) {
+        contacts.add(p);
+    }
+
     public int getNumOfBusinesses() {
         int numOfBusinesses = 0;
         for (Contact a : contacts) {
@@ -167,15 +120,6 @@ public class AddressBook implements Compare, Serializable {
         return numOfPersons;
     }
 
-    public void addPerson(String firstName, String lastName, BirthDate bd, String country, String city, String postalCode, String email, String telephoneNumber) {
-        Person p = new Person(firstName, lastName, bd, country, city, postalCode, email, telephoneNumber);
-        contacts.add(p);
-    }
-
-    public void addPerson(Person p) {
-        contacts.add(p);
-    }
-
     public void delete(int[] indices) {
         try {
             for (int index : indices) {
@@ -184,10 +128,6 @@ public class AddressBook implements Compare, Serializable {
         } catch (Exception e) {
             // if there isn't any selected one so this may cause an exception and if it happen we didn't want to do anything
         }
-    }
-
-    public static ArrayList<Contact> getContacts() {
-        return contacts;
     }
 
     @Override
